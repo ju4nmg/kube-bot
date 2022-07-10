@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bot-sa
+  namespace: bot
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bot-secret
+  namespace: bot
+  annotations:
+    kubernetes.io/service-account.name: bot-sa
+type: kubernetes.io/service-account-token

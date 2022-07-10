@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: bot
+  name: bot-role
+rules:
+- apiGroups: [""] #   "" indicates the core API group
+  resources: ["pods", "namespaces"]
+  verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: bot-rolebinding
+  namespace: bot
+subjects:
+  - kind: ServiceAccount
+    name: bot-sa
+    namespace: bot
+roleRef:
+  kind: ClusterRole
+  name: bot-role
+  apiGroup: rbac.authorization.k8s.io
