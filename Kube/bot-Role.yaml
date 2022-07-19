@@ -4,9 +4,9 @@ metadata:
   namespace: bot
   name: bot-role
 rules:
-- apiGroups: [""] #   "" indicates the core API group
-  resources: ["pods", "namespaces"]
-  verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
+- apiGroups: ["apps","extensions"] #   "" indicates the core API group
+  resources: ["pods","services","namespaces","deployments/status","jobs","deployments"]
+  verbs: ["get", "watch", "list", "create", "update", "patch", "delete", "status"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
