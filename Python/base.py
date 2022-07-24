@@ -57,7 +57,7 @@ def create_deploy(deploy_file):
 def watch_namespace(namespace):
     # count = 10
     for event in watch.Watch().stream(core.list_namespaced_event, namespace=namespace, timeout_seconds=10):
-        print(f" event: {event['object']} at {event['object']}")
+        print(event['object'].message)
         # count -= 1
         # if not count:
         #     watch.Watch().stop()
